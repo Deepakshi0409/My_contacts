@@ -18,7 +18,7 @@ public interface contactDao {
         void deleteTask(contact task);
 
         @Query("SELECT * FROM contact")
-        DataSource.Factory<Integer, contact> getTasks();
+        static DataSource.Factory<Integer, contact> getTasks();
 
 
     }

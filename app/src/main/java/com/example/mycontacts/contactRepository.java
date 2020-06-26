@@ -2,6 +2,9 @@ package com.example.mycontacts;
 
 import android.app.Application;
 
+import androidx.lifecycle.LiveData;
+import androidx.paging.LivePagedListBuilder;
+import androidx.paging.PagedList;
 import androidx.room.Dao;
 
 import java.util.concurrent.ExecutorService;
@@ -55,5 +58,11 @@ public class contactRepository {
             }
         });
 
+    }
+    public LiveData<PagedList<contact>> getALLTasks(){
+        int PAGE_SIZE = 15;
+        return new LivePagedListBuilder<>(
+                contactDao.getALLTasks(), PAGE_SIZE
+        ).build();
     }
 }
