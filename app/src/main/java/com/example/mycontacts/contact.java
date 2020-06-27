@@ -12,17 +12,17 @@ public class contact {
     private String taskName;
     @PrimaryKey()
     @ColumnInfo(name = "Phone")
-    private int taskPhone;
+    private String taskPhone;
     @ColumnInfo(name = "Email")
     private String taskEmail;
     @ColumnInfo(name = "Age")
-    private int taskAge;
+    private String taskAge;
     @ColumnInfo(name = "City")
     private String taskCity;
     @ColumnInfo(name = "College")
     private String taskCollege;
 
-    public contact(String taskName, int taskPhone, String taskEmail, int taskAge, String taskCity, String taskCollege) {
+    public contact(String taskName, String taskPhone, String taskEmail, String taskAge, String taskCity, String taskCollege) {
         this.taskName = taskName;
         this.taskPhone = taskPhone;
         this.taskEmail = taskEmail;
@@ -39,11 +39,11 @@ public class contact {
         this.taskName = taskName;
     }
 
-    public int getTaskPhone() {
+    public String getTaskPhone() {
         return taskPhone;
     }
 
-    public void setTaskPhone(int taskPhone) {
+    public void setTaskPhone(String taskPhone) {
         this.taskPhone = taskPhone;
     }
 
@@ -54,23 +54,32 @@ public class contact {
     public void setTaskEmail(String taskEmail) {
         this.taskEmail = taskEmail;
     }
-    public int getTaskAge ( ){
+
+    public String getTaskAge() {
         return taskAge;
     }
-    public void setTaskAge(int taskAge){
+
+    public void setTaskAge(String taskAge) {
         this.taskAge = taskAge;
     }
-    public String getTaskCity(){
+
+    public String getTaskCity() {
         return taskCity;
     }
-    public void setTaskCity(String taskCity){
+
+    public void setTaskCity(String taskCity) {
         this.taskCity = taskCity;
     }
-    public String getTaskCollege(){
+
+    public String getTaskCollege() {
         return taskCollege;
     }
-    public void setTaskCollege(String taskCollege){
+
+    public void setTaskCollege(String taskCollege) {
         this.taskCollege = taskCollege;
     }
 
+    public boolean isContactEqual(contact t2) {
+        return ((taskName.equals(t2.getTaskName())) && (taskPhone.equals(t2.getTaskPhone())) && (taskEmail == t2.getTaskEmail()) && (taskAge.equals(t2.getTaskAge())) && (taskCity.equals(t2.getTaskCity())) && (taskCollege.equals(t2.getTaskCollege())));
+    }
 }

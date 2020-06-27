@@ -26,6 +26,14 @@ public class contactListPagingAdapter extends PagedListAdapter<contact,listViewH
     final contact currTask = getItem(position);
     if(currTask != null) {
         holder.bind(currTask);
+        if(clickListener!=null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickListener.itemClick(position,v);
+                }
+            });
+        }
     }
     }
     private static DiffUtil.ItemCallback<contact> DIFF_CALLBACK = new DiffUtil.ItemCallback<contact>() {

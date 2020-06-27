@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
             pagingAdapter.submitList(tasks);
             }
         }
- public boolean iscontactEqual(contact t2){
-        return ()
-        }
+
     }
 }
