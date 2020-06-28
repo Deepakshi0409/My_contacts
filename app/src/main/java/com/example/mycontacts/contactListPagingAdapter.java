@@ -36,6 +36,15 @@ public class contactListPagingAdapter extends PagedListAdapter<contact,listViewH
         }
     }
     }
+    public void setOnItemClickListener(ClickListener clickListener){
+        this.clickListener = clickListener;
+    }
+    public interface ClickListener{
+        void itemClick(int position,View view);
+    }
+    public  contact getTaskAtPosition(int position){
+        return getItem(position);
+    }
     private static DiffUtil.ItemCallback<contact> DIFF_CALLBACK = new DiffUtil.ItemCallback<contact>() {
         @Override
         public boolean areItemsTheSame(@NonNull contact oldItem, @NonNull contact newItem) {

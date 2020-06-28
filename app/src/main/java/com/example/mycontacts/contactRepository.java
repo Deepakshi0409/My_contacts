@@ -59,10 +59,10 @@ public class contactRepository {
         });
 
     }
-    public LiveData<PagedList<contact>> getALLTasks(){
+    public LiveData<PagedList<contact>> getTasks(){
         int PAGE_SIZE = 15;
         return new LivePagedListBuilder<>(
-                contactDao.getALLTasks(), PAGE_SIZE
+                contactDao.getTasks(), PAGE_SIZE
         ).build();
     }
 }
