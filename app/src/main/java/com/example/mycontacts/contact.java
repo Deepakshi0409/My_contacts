@@ -11,6 +11,7 @@ public class contact {
     @ColumnInfo(name = "Name")
     private String taskName;
     @PrimaryKey()
+    @NonNull()
     @ColumnInfo(name = "Phone")
     private String taskPhone;
     @ColumnInfo(name = "Email")
