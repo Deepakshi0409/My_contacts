@@ -9,6 +9,7 @@ import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 
 public class contactListPagingAdapter extends PagedListAdapter<contact,listViewHolder> {
+    private ClickListener clickListener;
     protected contactListPagingAdapter(){
         super(DIFF_CALLBACK);
     }
@@ -22,7 +23,7 @@ public class contactListPagingAdapter extends PagedListAdapter<contact,listViewH
     }
 
     @Override
-    public void onBindViewHolder(@NonNull listViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull listViewHolder holder, final int position) {
     final contact currTask = getItem(position);
     if(currTask != null) {
         holder.bind(currTask);

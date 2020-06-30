@@ -11,12 +11,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class contactRepository {
+    private static contactRepository INSTANCE = null;
+
     private contactDao ContactDao;
-    private contactRepository INSTANCE = null;
+
+    private static int PAGE_SIZE = 15;
+
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     public contactRepository(Application application) {
-        contactDataBase ContactDatabase = contactDataBase.getDatabase(application);
+        contactDatabase ContactDatabase = contactDatabase.getInstance(application);
         ContactDao = ContactDatabase.ContactDao();
     }
 
@@ -59,10 +63,9 @@ public class contactRepository {
         });
 
     }
-    public LiveData<PagedList<contact>> getTasks(){
-        int PAGE_SIZE = 15;
+    public LiveData<PagedList<contact>> getAllTasks() {
         return new LivePagedListBuilder<>(
-                contactDao.getTasks(), PAGE_SIZE
+                contactDao.getAllTasks(), PAGE_SIZE
         ).build();
     }
 }

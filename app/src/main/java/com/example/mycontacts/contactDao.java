@@ -8,19 +8,20 @@ import androidx.room.Query;
 import androidx.room.Update;
 @Dao
 public interface contactDao {
-        @Insert
-        void insertTask(contact task);
 
-        @Update
-        void updateTask(contact task);
+    @Insert
+    void insertTask(contact task);
 
-        @Delete
-        void deleteTask(contact task);
+    @Update
+    void updateTask(contact task);
 
-        @Query("SELECT * FROM contact")
-         DataSource.Factory<Integer, contact> getTasks();
+    @Delete
+    void deleteTask(contact task);
+
+    @Query("Select * from contact")
+    DataSource.Factory<Integer,contact> getAllTasks();
 
 
-    }
+}
 
 

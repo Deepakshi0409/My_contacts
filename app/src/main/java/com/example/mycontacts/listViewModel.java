@@ -14,7 +14,7 @@ public class listViewModel extends AndroidViewModel {
     public listViewModel(@NonNull Application application){
         super(application);
         ContactRepository = new contactRepository(application);
-        pagedListLiveData = ContactRepository.getTasks();
+        pagedListLiveData = ContactRepository.getAllTasks();
     }
     public void insertTask(contact task){
         ContactRepository.insertTask(task);

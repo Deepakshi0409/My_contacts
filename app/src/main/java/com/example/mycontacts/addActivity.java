@@ -49,6 +49,18 @@ class addActivity extends AppCompatActivity implements AdapterView.OnItemSelecte
             if (!taskName.isEmpty()) {
                 name.setText(taskName);
             }
+            if (!taskEmail.isEmpty()) {
+                name.setText(taskEmail);
+            }
+            if (!taskAge.isEmpty()) {
+                name.setText(taskAge);
+            }
+            if (!taskCity.isEmpty()) {
+                name.setText(taskCity);
+            }
+            if (!taskCollege.isEmpty()) {
+                name.setText(taskCollege);
+            }
 
             if (!taskPhone.isEmpty()) {
                 phone.setText(taskPhone);
