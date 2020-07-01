@@ -5,7 +5,8 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
-import androidx.room.Dao;
+import androidx.room.PrimaryKey;
+
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -13,7 +14,7 @@ import java.util.concurrent.Executors;
 public class contactRepository {
     private static contactRepository INSTANCE = null;
 
-    private contactDao ContactDao;
+    private ContactDao contactDao;
 
     private static int PAGE_SIZE = 15;
 
@@ -21,7 +22,7 @@ public class contactRepository {
 
     public contactRepository(Application application) {
         contactDatabase ContactDatabase = contactDatabase.getInstance(application);
-        ContactDao = ContactDatabase.ContactDao();
+        contactDao = ContactDatabase.contactDao();
     }
 
     public contactRepository getRepository(Application application) {
@@ -40,7 +41,7 @@ public class contactRepository {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
-                ContactDao.insertTask(task);
+                contactDao.insertTask(task);
             }
         });
     }
@@ -49,7 +50,7 @@ public class contactRepository {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
-                ContactDao.deleteTask(task);
+                contactDao.deleteTask(task);
             }
         });
     }
@@ -58,7 +59,7 @@ public class contactRepository {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
-                ContactDao.updateTask(task);
+                contactDao.updateTask(task);
             }
         });
 

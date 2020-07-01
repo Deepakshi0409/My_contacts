@@ -18,8 +18,7 @@ class addActivity extends AppCompatActivity implements AdapterView.OnItemSelecte
     public static final String EXTRA_DATA_CITY = "extra_task_city";
     public static final String EXTRA_DATA_COLLEGE = "extra_task_college";
     private addViewModel viewModel;
-    private int[] priorities = {1,2,3,4,5,6,7,8,9,0};
-    private int phones = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +32,7 @@ class addActivity extends AppCompatActivity implements AdapterView.OnItemSelecte
         //creating references to views
         final EditText name = findViewById(R.id.newname);
         final EditText phone = findViewById(R.id.newnumber);
-        Button saveBtn = findViewById(R.id.newbutton);
+        final Button saveBtn = findViewById(R.id.newbutton);
         final EditText email = findViewById(R.id.newemail);
         final EditText age = findViewById(R.id.newage);
         final EditText city = findViewById(R.id.newcity);
@@ -64,9 +63,7 @@ class addActivity extends AppCompatActivity implements AdapterView.OnItemSelecte
 
             if (!taskPhone.isEmpty()) {
                 phone.setText(taskPhone);
-                phone.setSelection(taskPhone.length());
-                phone.requestFocus();
-            }
+                            }
             saveBtn.setText("UPDATE");
         }
         saveBtn.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +95,7 @@ class addActivity extends AppCompatActivity implements AdapterView.OnItemSelecte
     }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        phones = priorities[position];
+
     }
 
     @Override

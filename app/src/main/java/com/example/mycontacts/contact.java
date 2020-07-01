@@ -3,15 +3,16 @@ package com.example.mycontacts;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "contact")
-
 public class contact {
+
     @ColumnInfo(name = "Name")
     private String taskName;
-    @PrimaryKey()
     @NonNull()
+    @PrimaryKey()
     @ColumnInfo(name = "Phone")
     private String taskPhone;
     @ColumnInfo(name = "Email")
@@ -30,6 +31,9 @@ public class contact {
         this.taskAge = taskAge;
         this.taskCity = taskCity;
         this.taskCollege = taskCollege;
+    }
+    public contact(){
+
     }
 
     public String getTaskName() {
