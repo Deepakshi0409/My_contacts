@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-class addActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AddActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public static final String EXTRA_DATA_NAME = "extra_task_name";
     public static final String EXTRA_DATA_PHONE = "extra_task_phone";
     public static final String EXTRA_DATA_EMAIL = "extra_task_email";
@@ -63,6 +63,8 @@ class addActivity extends AppCompatActivity implements AdapterView.OnItemSelecte
 
             if (!taskPhone.isEmpty()) {
                 phone.setText(taskPhone);
+                phone.setSelection(taskPhone.length());
+                phone.requestFocus();;
                             }
             saveBtn.setText("UPDATE");
         }
@@ -78,10 +80,10 @@ class addActivity extends AppCompatActivity implements AdapterView.OnItemSelecte
 
                 if (!Name.isEmpty() && !Phone.isEmpty()) {
                     if (extras != null) {
-                        contact task = new contact(Name, Phone, Email, Age, City, College);
+                        Contact task = new Contact(Name, Phone, Email, Age, City, College);
                         viewModel.updateTask(task);
                     } else {
-                        contact task = new contact(Name, Phone, Email, Age, City, College);
+                        Contact task = new Contact(Name, Phone, Email, Age, City, College);
                         viewModel.insertTask(task);
                     }
                 } else {
@@ -100,6 +102,7 @@ class addActivity extends AppCompatActivity implements AdapterView.OnItemSelecte
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
 
     }
 }

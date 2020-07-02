@@ -19,20 +19,20 @@ import java.io.InputStreamReader;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {contact.class}, version = 1, exportSchema = false)
-public abstract class contactDatabase extends RoomDatabase {
+@Database(entities = {Contact.class}, version = 1, exportSchema = false)
+public abstract class ContactDatabase extends RoomDatabase {
     public abstract ContactDao contactDao();
 
-    public static contactDatabase INSTANCE = null;
+    public static ContactDatabase INSTANCE = null;
 
     private static ExecutorService executor = Executors.newSingleThreadExecutor();
 
-    public static contactDatabase getInstance(final Context context) {
+    public static ContactDatabase getInstance(final Context context) {
         if (INSTANCE == null) {
-            synchronized (contactDatabase.class) {
+            synchronized (ContactDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            contactDatabase.class,
+                            ContactDatabase.class,
                             "contactDatabase"
                     ).addCallback(new Callback() {
                         @Override
@@ -86,7 +86,7 @@ public abstract class contactDatabase extends RoomDatabase {
                 String age = contact.getString("age");
                 String city = contact.getString("city");
                 String college = contact.getString("college");
-                contactDao.insertTask(new contact(name,phone, email,age,city,college));
+                contactDao.insertTask(new Contact(name,phone, email,age,city,college));
             }
         } catch (JSONException e) {
             e.printStackTrace();

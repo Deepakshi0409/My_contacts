@@ -3,11 +3,10 @@ package com.example.mycontacts;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "contact")
-public class contact {
+@Entity(tableName = "Contact")
+public class Contact {
 
     @ColumnInfo(name = "Name")
     private String taskName;
@@ -24,7 +23,7 @@ public class contact {
     @ColumnInfo(name = "College")
     private String taskCollege;
 
-    public contact(String taskName, String taskPhone, String taskEmail, String taskAge, String taskCity, String taskCollege) {
+    public Contact(String taskName, String taskPhone, String taskEmail, String taskAge, String taskCity, String taskCollege) {
         this.taskName = taskName;
         this.taskPhone = taskPhone;
         this.taskEmail = taskEmail;
@@ -32,7 +31,7 @@ public class contact {
         this.taskCity = taskCity;
         this.taskCollege = taskCollege;
     }
-    public contact(){
+    public Contact(){
 
     }
 
@@ -84,7 +83,7 @@ public class contact {
         this.taskCollege = taskCollege;
     }
 
-    public boolean isContactEqual(contact t2) {
+    public boolean isContactEqual(Contact t2) {
         return ((taskName.equals(t2.getTaskName())) && (taskPhone.equals(t2.getTaskPhone())) && (taskEmail == t2.getTaskEmail()) && (taskAge.equals(t2.getTaskAge())) && (taskCity.equals(t2.getTaskCity())) && (taskCollege.equals(t2.getTaskCollege())));
     }
 }

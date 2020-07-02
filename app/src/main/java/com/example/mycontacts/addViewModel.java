@@ -8,20 +8,20 @@ import androidx.lifecycle.LiveData;
 import androidx.paging.PagedList;
 
 public class addViewModel extends AndroidViewModel {
-    private contactRepository repository;
+    private ContactRepository repository;
 
-    private LiveData<PagedList<contact>> pagedListLiveData;
+    private LiveData<PagedList<Contact>> pagedListLiveData;
 
     public addViewModel(@NonNull Application application) {
         super(application);
-        repository = new contactRepository(application);
+        repository = new ContactRepository(application);
     }
 
-    public void insertTask(contact task){
+    public void insertTask(Contact task){
         repository.insertTask(task);
     }
 
-    public void updateTask(contact task){
+    public void updateTask(Contact task){
         repository.updateTask(task);
     }
 

@@ -2,36 +2,20 @@
   "contact": [
     {
       "name": "Ravi ",
-      "email": "ravi@gmail.com",
-      "phone": "+91 0000000000",
-      "city": "xxx,xxx,xxx",
-      "college": "xxx",
-      "age" : "xx"
+      "phone": "+91 0000000000"
       },
 
     {
       "name": "Leena",
-      "email": "Leena@gmail.com",
-      "phone": "+91 0000000000",
-      "city": "xxx,xxx,xxx",
-      "college": "xxx",
-      "age" : "xx"
+      "phone": "+91 0000000000"
     },
     {
       "name": "Riya",
-      "email": "Riya@gmail.com",
-      "phone": "+91 0000000000",
-      "city": "xxx,xxx,xxx",
-      "college": "xxx",
-      "age" : "xx"
+      "phone": "+91 0000000000"
     },
     {
       "name": "Sam",
-      "email": "Sam@gmail.com",
-      "phone": "+91 0000000000",
-      "city": "xxx,xxx,xxx",
-      "college": "xxx",
-      "age" : "xx"
+      "phone": "+91 0000000000"
     }
   ]
     }

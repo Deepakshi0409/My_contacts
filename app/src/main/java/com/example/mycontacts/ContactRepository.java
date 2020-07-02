@@ -5,14 +5,13 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
-import androidx.room.PrimaryKey;
 
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class contactRepository {
-    private static contactRepository INSTANCE = null;
+public class ContactRepository {
+    private static ContactRepository INSTANCE = null;
 
     private ContactDao contactDao;
 
@@ -20,15 +19,15 @@ public class contactRepository {
 
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-    public contactRepository(Application application) {
-        contactDatabase ContactDatabase = contactDatabase.getInstance(application);
+    public ContactRepository(Application application) {
+        ContactDatabase ContactDatabase = com.example.mycontacts.ContactDatabase.getInstance(application);
         contactDao = ContactDatabase.contactDao();
     }
 
-    public contactRepository getRepository(Application application) {
+    public ContactRepository getRepository(Application application) {
         if (INSTANCE == null) {
-            synchronized (contactRepository.class) {
-                INSTANCE = new contactRepository(application);
+            synchronized (ContactRepository.class) {
+                INSTANCE = new ContactRepository(application);
 
             }
 
@@ -37,7 +36,7 @@ public class contactRepository {
 
     }
 
-    public void insertTask(final contact task) {
+    public void insertTask(final Contact task) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -46,7 +45,7 @@ public class contactRepository {
         });
     }
 
-    public void deleteTask(final contact task) {
+    public void deleteTask(final Contact task) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -55,7 +54,7 @@ public class contactRepository {
         });
     }
 
-    public void updateTask(final contact task) {
+    public void updateTask(final Contact task) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -64,7 +63,7 @@ public class contactRepository {
         });
 
     }
-    public LiveData<PagedList<contact>> getAllTasks() {
+    public LiveData<PagedList<Contact>> getAllTasks() {
         return new LivePagedListBuilder<>(
                 contactDao.getAllTasks(), PAGE_SIZE
         ).build();

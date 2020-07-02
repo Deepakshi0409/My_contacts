@@ -8,9 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 
-public class contactListPagingAdapter extends PagedListAdapter<contact,listViewHolder> {
+public class ContactListPagingAdapter extends PagedListAdapter<Contact,listViewHolder> {
     private ClickListener clickListener;
-    protected contactListPagingAdapter(){
+    protected ContactListPagingAdapter(){
         super(DIFF_CALLBACK);
     }
 
@@ -24,7 +24,7 @@ public class contactListPagingAdapter extends PagedListAdapter<contact,listViewH
 
     @Override
     public void onBindViewHolder(@NonNull listViewHolder holder, final int position) {
-    final contact currTask = getItem(position);
+    final Contact currTask = getItem(position);
     if(currTask != null) {
         holder.bind(currTask);
         if(clickListener!=null){
@@ -43,17 +43,17 @@ public class contactListPagingAdapter extends PagedListAdapter<contact,listViewH
     public interface ClickListener{
         void itemClick(int position,View view);
     }
-    public  contact getTaskAtPosition(int position){
+    public Contact getTaskAtPosition(int position){
         return getItem(position);
     }
-    private static DiffUtil.ItemCallback<contact> DIFF_CALLBACK = new DiffUtil.ItemCallback<contact>() {
+    private static DiffUtil.ItemCallback<Contact> DIFF_CALLBACK = new DiffUtil.ItemCallback<Contact>() {
         @Override
-        public boolean areItemsTheSame(@NonNull contact oldItem, @NonNull contact newItem) {
+        public boolean areItemsTheSame(@NonNull Contact oldItem, @NonNull Contact newItem) {
             return (oldItem.getTaskName().equals(newItem.getTaskName()));
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull contact oldItem, @NonNull contact newItem) {
+        public boolean areContentsTheSame(@NonNull Contact oldItem, @NonNull Contact newItem) {
             return oldItem.isContactEqual(newItem);
         }
     };

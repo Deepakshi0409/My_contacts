@@ -18,7 +18,7 @@ public class listViewHolder extends RecyclerView.ViewHolder {
         cityTV = itemView.findViewById(R.id.newcity);
         collegeTV = itemView.findViewById(R.id.newcollege);
     }
-    public void bind(contact task) {
+    public void bind(Contact task) {
         nameTV.setText(task.getTaskName());
         emailTV.setText(task.getTaskEmail());
         phoneTV.setText(task.getTaskPhone());

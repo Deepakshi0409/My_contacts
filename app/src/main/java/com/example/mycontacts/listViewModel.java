@@ -9,18 +9,18 @@ import androidx.paging.PagedList;
 
 public class listViewModel extends AndroidViewModel {
 
-    private contactRepository ContactRepository;
-    LiveData<PagedList<contact>> pagedListLiveData;
+    private com.example.mycontacts.ContactRepository ContactRepository;
+    LiveData<PagedList<Contact>> pagedListLiveData;
     public listViewModel(@NonNull Application application){
         super(application);
-        ContactRepository = new contactRepository(application);
+        ContactRepository = new ContactRepository(application);
         pagedListLiveData = ContactRepository.getAllTasks();
     }
-    public void insertTask(contact task){
+    public void insertTask(Contact task){
         ContactRepository.insertTask(task);
     }
 
-    public void deleteTask(contact task){ ContactRepository.deleteTask(task);
+    public void deleteTask(Contact task){ ContactRepository.deleteTask(task);
     }
 
 }

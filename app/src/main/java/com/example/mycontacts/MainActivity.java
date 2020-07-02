@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_DATA_CITY = "extra_task_city";
     public static final String EXTRA_DATA_COLLEGE = "extra_task_college";
     private listViewModel viewModel;
-    private contact Contact;
+    private com.example.mycontacts.Contact Contact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +41,18 @@ public class MainActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, addActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddActivity.class);
                 startActivityForResult(intent,NEW_DATA_REQUEST_CODE);
             }
         });
         viewModel = new ViewModelProvider(this).get(listViewModel.class);
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final contactListPagingAdapter taskListPagingAdapter = new contactListPagingAdapter();
+        final ContactListPagingAdapter taskListPagingAdapter = new ContactListPagingAdapter();
         recyclerView.setAdapter(taskListPagingAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        viewModel.pagedListLiveData.observe(this, new Observer<PagedList<contact>>() {
+        viewModel.pagedListLiveData.observe(this, new Observer<PagedList<com.example.mycontacts.Contact>>() {
             @Override
-            public void onChanged(PagedList<contact> tasks) {
+            public void onChanged(PagedList<com.example.mycontacts.Contact> tasks) {
                 taskListPagingAdapter.submitList(tasks);
             }
         });
@@ -80,17 +80,17 @@ public class MainActivity extends AppCompatActivity {
         });
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
-        taskListPagingAdapter.setOnItemClickListener(new contactListPagingAdapter.ClickListener() {
+        taskListPagingAdapter.setOnItemClickListener(new ContactListPagingAdapter.ClickListener() {
             @Override
             public void itemClick(int position, View view) {
-                contact currentTask = taskListPagingAdapter.getTaskAtPosition(position);
+                com.example.mycontacts.Contact currentTask = taskListPagingAdapter.getTaskAtPosition(position);
                 launchUpdateTaskActivity(currentTask);
             }
         });
 
         }
-    private void launchUpdateTaskActivity(contact currentTask) {
-        Intent intent = new Intent(this,addActivity.class);
+    private void launchUpdateTaskActivity(com.example.mycontacts.Contact currentTask) {
+        Intent intent = new Intent(this, AddActivity.class);
         intent.putExtra(EXTRA_DATA_NAME,currentTask.getTaskName());
         intent.putExtra(EXTRA_DATA_PHONE,currentTask.getTaskPhone());
         intent.putExtra(EXTRA_DATA_EMAIL,currentTask.getTaskEmail());
