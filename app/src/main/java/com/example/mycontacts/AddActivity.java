@@ -17,6 +17,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
     public static final String EXTRA_DATA_AGE = "extra_task_age";
     public static final String EXTRA_DATA_CITY = "extra_task_city";
     public static final String EXTRA_DATA_COLLEGE = "extra_task_college";
+    public static final String EXTRA_DATA_GENDER = "extra_task_gender";
     private addViewModel viewModel;
 
 
@@ -37,6 +38,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         final EditText age = findViewById(R.id.newage);
         final EditText city = findViewById(R.id.newcity);
         final EditText college = findViewById(R.id.newcollege);
+        final EditText gender = findViewById(R.id.newgender);
         if (extras != null) {
             String taskName = extras.getString(EXTRA_DATA_NAME, "");
             String taskPhone = extras.getString(EXTRA_DATA_PHONE, "");
@@ -44,6 +46,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
             String taskAge = extras.getString(EXTRA_DATA_AGE, "");
             String taskCity = extras.getString(EXTRA_DATA_CITY, "");
             String taskCollege = extras.getString(EXTRA_DATA_COLLEGE, "");
+            String taskGender = extras.getString(EXTRA_DATA_GENDER, "");
 
             if (!taskName.isEmpty()) {
                 name.setText(taskName);
@@ -59,6 +62,9 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
             }
             if (!taskCollege.isEmpty()) {
                 name.setText(taskCollege);
+            }
+            if (!taskGender .isEmpty()) {
+                name.setText(taskGender);
             }
 
             if (!taskPhone.isEmpty()) {
@@ -77,13 +83,14 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                 String Age = age.getText().toString();
                 String City = city.getText().toString();
                 String College = college.getText().toString();
+                String Gender = gender.getText().toString();
 
                 if (!Name.isEmpty() && !Phone.isEmpty()) {
                     if (extras != null) {
-                        Contact task = new Contact(Name, Phone, Email, Age, City, College);
+                        Contact task = new Contact(Name, Phone, Email, Age, City, College,Gender);
                         viewModel.updateTask(task);
                     } else {
-                        Contact task = new Contact(Name, Phone, Email, Age, City, College);
+                        Contact task = new Contact(Name, Phone, Email, Age, City, College,Gender);
                         viewModel.insertTask(task);
                     }
                 } else {
