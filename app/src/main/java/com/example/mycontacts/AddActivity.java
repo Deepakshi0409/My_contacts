@@ -5,6 +5,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
     public static final String EXTRA_DATA_COLLEGE = "extra_task_college";
     public static final String EXTRA_DATA_GENDER = "extra_task_gender";
     private addViewModel viewModel;
+    RadioButton radioButton;
 
 
     @Override
@@ -38,7 +42,9 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         final EditText age = findViewById(R.id.newage);
         final EditText city = findViewById(R.id.newcity);
         final EditText college = findViewById(R.id.newcollege);
-        final EditText gender = findViewById(R.id.newgender);
+        final RadioGroup GenderGroup = findViewById(R.id.gender);
+        RadioButton Male = findViewById(R.id.rb1);
+        RadioButton Female = findViewById(R.id.rb2);
         if (extras != null) {
             String taskName = extras.getString(EXTRA_DATA_NAME, "");
             String taskPhone = extras.getString(EXTRA_DATA_PHONE, "");
@@ -64,7 +70,12 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                 name.setText(taskCollege);
             }
             if (!taskGender .isEmpty()) {
-                name.setText(taskGender);
+                if(taskGender.equals("Male")){
+                    Male.setChecked(true);
+                }
+                else  {
+                    Female.setChecked(true);
+                }
             }
 
             if (!taskPhone.isEmpty()) {
@@ -83,7 +94,9 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                 String Age = age.getText().toString();
                 String City = city.getText().toString();
                 String College = college.getText().toString();
-                String Gender = gender.getText().toString();
+                int genderId = GenderGroup.getCheckedRadioButtonId();
+                radioButton = (RadioButton) findViewById(genderId);
+                String Gender = radioButton.getText().toString();
 
                 if (!Name.isEmpty() && !Phone.isEmpty()) {
                     if (extras != null) {
