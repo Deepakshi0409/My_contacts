@@ -19,6 +19,7 @@ import org.w3c.dom.Text;
 
 public class AddActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+
     public static final String EXTRA_DATA_NAME = "extra_task_name";
     public static final String EXTRA_DATA_PHONE = "extra_task_phone";
     public static final String EXTRA_DATA_EMAIL = "extra_task_email";
@@ -46,9 +47,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         final EditText City = findViewById(R.id.newcity);
         final EditText College = findViewById(R.id.newcollege);
         final EditText Email = findViewById(R.id.newemail);
-        final RadioGroup GenderGroup = findViewById(R.id.gender);
-        RadioButton male = findViewById(R.id.rb1);
-        RadioButton female = findViewById(R.id.rb2);
+
 
         TextView save = findViewById(R.id.newbutton);
 
@@ -59,7 +58,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
             String ContactAge = extras.getString(EXTRA_DATA_AGE, "");
             String ContactCity = extras.getString(EXTRA_DATA_CITY, "");
             String ContactCollege = extras.getString(EXTRA_DATA_COLLEGE, "");
-            String ContactGender = extras.getString(EXTRA_DATA_GENDER, "");
+
 
 
             if (!ContactName.isEmpty()) {
@@ -72,12 +71,6 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
 
             if (!ContactAge.isEmpty()) {
                 Age.setText(ContactAge);
-            }
-            if (!ContactGender.isEmpty()) {
-                if (ContactGender.equals("Male")) {
-                    male.setChecked(true);
-                } else
-                    female.setChecked(true);
             }
 
 
@@ -106,21 +99,18 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                 String phone = Phone.getText().toString();
                 String email = Email.getText().toString();
                 String age = Age.getText().toString();
-                int genderId = GenderGroup.getCheckedRadioButtonId();
-                radioButton =  findViewById(genderId);
-                String gender = radioButton.getText().toString();
                 String city = City.getText().toString();
                 String college = College.getText().toString();
-                if (!name.isEmpty() && !phone.isEmpty() && !age.isEmpty() && !gender.isEmpty() && !city.isEmpty() && !college.isEmpty() && !email.isEmpty()) {
+                if (!name.isEmpty() && !phone.isEmpty() && !age.isEmpty() &&  !city.isEmpty() && !college.isEmpty() && !email.isEmpty()) {
                     if (extras != null) {
-                        Contact task = new Contact(name, phone, email, age,gender, city, college);
+                        Contact task = new Contact(name, phone, email, age, city, college);
                         Log.e("TAG", task.getTaskName());
                         mAddViewModel.updateTask(task);
                         Intent intent = new Intent(AddActivity.this, MainActivity.class);
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(), " Updated ", Toast.LENGTH_SHORT).show();
                     } else {
-                        Contact task = new Contact(name, phone, email, age,gender, city, college);
+                        Contact task = new Contact(name, phone, email, age, city, college);
                         mAddViewModel.insertTask(task);
                         Toast.makeText(getApplicationContext(), " Contact Added", Toast.LENGTH_SHORT).show();
                     }
