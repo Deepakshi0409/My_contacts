@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_DATA_PHONE = "extra_task_phone";
     public static final String EXTRA_DATA_EMAIL = "extra_task_email";
     public static final String EXTRA_DATA_AGE = "extra_task_age";
+    public static final String EXTRA_DATA_GENDER = "extra_task_gender";
     public static final String EXTRA_DATA_CITY = "extra_task_city";
     public static final String EXTRA_DATA_COLLEGE = "extra_task_college";
-    public static final String EXTRA_DATA_GENDER = "extra_task_gender";
     private listViewModel viewModel;
     private com.example.mycontacts.Contact Contact;
 
@@ -96,9 +96,10 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_DATA_PHONE,currentTask.getTaskPhone());
         intent.putExtra(EXTRA_DATA_EMAIL,currentTask.getTaskEmail());
         intent.putExtra(EXTRA_DATA_AGE,currentTask.getTaskAge());
+        intent.putExtra(EXTRA_DATA_GENDER,currentTask.getTaskGender());
         intent.putExtra(EXTRA_DATA_CITY,currentTask.getTaskCity());
         intent.putExtra(EXTRA_DATA_COLLEGE,currentTask.getTaskCollege());
-        intent.putExtra(EXTRA_DATA_GENDER,currentTask.getTaskCollege());
+
         startActivityForResult(intent,UPDATE_DATA_REQUEST_CODE);
     }
 }

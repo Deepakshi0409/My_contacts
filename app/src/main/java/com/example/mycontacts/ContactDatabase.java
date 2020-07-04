@@ -19,7 +19,7 @@ import java.io.InputStreamReader;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Contact.class}, version = 1, exportSchema = false)
+@Database(entities = {Contact.class}, version = 2, exportSchema = false)
 public abstract class ContactDatabase extends RoomDatabase {
     public abstract ContactDao contactDao();
 
@@ -84,10 +84,12 @@ public abstract class ContactDatabase extends RoomDatabase {
                 String phone = contact.getString("phone");
                 String email = contact.getString("email");
                 String age = contact.getString("age");
+                String gender = contact.getString("gender");
                 String city = contact.getString("city");
                 String college = contact.getString("college");
 
-                contactDao.insertTask(new Contact(name,phone, email,age,city,college));
+
+                contactDao.insertTask(new Contact(name,phone, email,age,gender,city,college));
             }
         } catch (JSONException e) {
             e.printStackTrace();
