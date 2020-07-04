@@ -20,7 +20,7 @@ public class listViewModel extends AndroidViewModel {
         ContactRepository.insertTask(task);
     }
 
-    public void deleteTask(Contact task){ ContactRepository.deleteTask(task);
-    }
+    public void deleteTask(Contact task) { ContactRepository.deleteTask(task);}
+
 
 }

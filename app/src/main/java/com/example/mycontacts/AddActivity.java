@@ -1,6 +1,8 @@
 package com.example.mycontacts;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -20,9 +22,9 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
     public static final String EXTRA_DATA_AGE = "extra_task_age";
     public static final String EXTRA_DATA_CITY = "extra_task_city";
     public static final String EXTRA_DATA_COLLEGE = "extra_task_college";
-    public static final String EXTRA_DATA_GENDER = "extra_task_gender";
+
     private addViewModel viewModel;
-    RadioButton radioButton;
+
 
 
     @Override
@@ -42,19 +44,15 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         final EditText age = findViewById(R.id.newage);
         final EditText city = findViewById(R.id.newcity);
         final EditText college = findViewById(R.id.newcollege);
-        final RadioGroup GenderGroup = findViewById(R.id.gender);
-        RadioButton Male = findViewById(R.id.rb1);
-        RadioButton Female = findViewById(R.id.rb2);
-        if (extras != null) {
+                if (extras != null) {
             String taskName = extras.getString(EXTRA_DATA_NAME, "");
             String taskPhone = extras.getString(EXTRA_DATA_PHONE, "");
             String taskEmail = extras.getString(EXTRA_DATA_EMAIL, "");
             String taskAge = extras.getString(EXTRA_DATA_AGE, "");
             String taskCity = extras.getString(EXTRA_DATA_CITY, "");
             String taskCollege = extras.getString(EXTRA_DATA_COLLEGE, "");
-            String taskGender = extras.getString(EXTRA_DATA_GENDER, "");
 
-            if (!taskName.isEmpty()) {
+             if (!taskName.isEmpty()) {
                 name.setText(taskName);
             }
             if (!taskEmail.isEmpty()) {
@@ -68,14 +66,6 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
             }
             if (!taskCollege.isEmpty()) {
                 name.setText(taskCollege);
-            }
-            if (!taskGender .isEmpty()) {
-                if(taskGender.equals("Male")){
-                    Male.setChecked(true);
-                }
-                else  {
-                    Female.setChecked(true);
-                }
             }
 
             if (!taskPhone.isEmpty()) {
@@ -94,22 +84,21 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                 String Age = age.getText().toString();
                 String City = city.getText().toString();
                 String College = college.getText().toString();
-                int genderId = GenderGroup.getCheckedRadioButtonId();
-                radioButton = (RadioButton) findViewById(genderId);
-                String Gender = radioButton.getText().toString();
 
-                if (!Name.isEmpty() && !Phone.isEmpty()) {
-                    if (extras != null) {
-                        Contact task = new Contact(Name, Phone, Email, Age, City, College,Gender);
+                if(!Name.isEmpty() && !Phone.isEmpty() ){
+                    if(extras!=null ){
+                        Contact task = new Contact(Name, Phone, Email, Age,  City, College);
                         viewModel.updateTask(task);
-                    } else {
-                        Contact task = new Contact(Name, Phone, Email, Age, City, College,Gender);
-                        viewModel.insertTask(task);
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "Missed an input", Toast.LENGTH_SHORT).show();
-                }
 
+                        }
+                    else{
+                        Contact task = new Contact(Name, Phone, Email, Age,  City, College);
+                        viewModel.insertTask(task);
+                         }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Missed an input",Toast.LENGTH_SHORT).show();
+                }
                 setResult(RESULT_OK);
                 finish();
             }

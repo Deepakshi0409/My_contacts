@@ -22,17 +22,14 @@ public class Contact {
     private String taskCity;
     @ColumnInfo(name = "College")
     private String taskCollege;
-    @ColumnInfo(name = "Gender")
-    private String taskGender;
 
-    public Contact(String taskName, String taskPhone, String taskEmail, String taskAge, String taskCity, String taskCollege, String taskGender) {
+        public Contact(String taskName, String taskPhone, String taskEmail, String taskAge, String taskCity, String taskCollege) {
         this.taskName = taskName;
         this.taskPhone = taskPhone;
         this.taskEmail = taskEmail;
         this.taskAge = taskAge;
         this.taskCity = taskCity;
         this.taskCollege = taskCollege;
-        this.taskGender = taskGender;
     }
     public Contact(){
 
@@ -86,16 +83,9 @@ public class Contact {
         this.taskCollege = taskCollege;
     }
 
-    public String getTaskGender() {
-        return taskGender;
-    }
-
-    public void setTaskGender(String taskGender) {
-        this.taskGender = taskGender;
-    }
 
 
     public boolean isContactEqual(Contact t2) {
-        return ((taskName.equals(t2.getTaskName())) && (taskPhone.equals(t2.getTaskPhone())) && (taskEmail == t2.getTaskEmail()) && (taskAge.equals(t2.getTaskAge())) && (taskCity.equals(t2.getTaskCity())) && (taskCollege.equals(t2.getTaskCollege())) && (taskGender.equals(t2.getTaskGender())));
+        return ((taskName.equals(t2.getTaskName())) && (taskPhone.equals(t2.getTaskPhone())) && (taskEmail == t2.getTaskEmail()) && (taskAge.equals(t2.getTaskAge())) && (taskCity.equals(t2.getTaskCity())) && (taskCollege.equals(t2.getTaskCollege())) );
     }
 }
